@@ -8,9 +8,50 @@ public class ArrayS {
     }
 
     public static void main(String[] args) {
-        char[] ch = new char[]{'a', 'b', 'c', 'a', 'b', 'e'};
-        hashmap(ch);
-        hash();
+//        char[] ch = new char[]{'a', 'b', 'c', 'a', 'b', 'e'};
+//        hashmap(ch);
+//        hash();
+        int arr[][]=new int[3][4];
+        for (int row=0;row<arr.length;row++){
+            for (int col=0;col<arr[0].length;col++){
+                arr[row][col]=new Scanner(System.in).nextInt();
+            }
+        }
+
+        int[][] matrix1 = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+
+        int[][] matrix2 = {
+                {9, 8, 7},
+                {6, 5, 4},
+                {3, 2, 1}
+        };
+
+        int rows = matrix1.length;
+        int columns = matrix1[0].length;
+
+        int[][] result = new int[rows][columns];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                result[i][j] = matrix1[i][j] + matrix2[i][j];
+            }
+        }
+
+        System.out.println("Matrix Addition Result:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println();
+
+
+}
+
+
     }
 
     public static int linearSearch(int[] number, int num) {
@@ -46,13 +87,14 @@ public class ArrayS {
     public static int largest_elementOf_array(int[] array) {
         int largest = Integer.MIN_VALUE;
 
-        for(int i = 0; i < array.length; ++i) {
+        for(int i = 0; i < array.length; i++) {
             if (largest < array[i]) {
                 largest = array[i];
             }
         }
 
         return largest;
+
     }
 
     public static int binarySearch(int[] array, int key) {
@@ -76,37 +118,36 @@ public class ArrayS {
     }
 
     public static int[] arrayReverse(int[] array) {
-        for(int i = 0; i < array.length / 2; ++i) {
-            int temp = array[i];
-            array[i] = array[array.length - 1 - i];
-            array[array.length - 1 - i] = temp;
+        int start=0;
+        int end=array.length-1;
+        while (start<=end){
+            int temp=array[start];
+            array[start]=array[end];
+            array[end]=temp;
+            start++;
+            end--;
         }
-
         return array;
     }
 
     public static int[] arrayRvrc(int[] array) {
-        int start = 0;
-
-        for(int end = array.length - 1; start < end; --end) {
-            int temp = array[end];
-            array[end] = array[start];
-            array[start] = temp;
-            ++start;
+        for (int i=0;i<array.length/2;i++){
+            int temp=array[i];
+            array[i]=array[array.length-1-i];
+            array[array.length-1-i]=temp;
         }
-
         return array;
     }
 
     public static void pairs_in_array(int[] array) {
         int tp = 0;
 
-        for(int i = 0; i < array.length; ++i) {
+        for(int i = 0; i < array.length; i++) {
             int current = array[i];
 
-            for(int j = i + 1; j < array.length; ++j) {
+            for(int j = i + 1; j < array.length; j++) {
                 System.out.print("(" + current + "," + array[j] + ")");
-                ++tp;
+                tp++;
             }
 
             System.out.println();
@@ -116,9 +157,9 @@ public class ArrayS {
     }
 
     public static void sub_array(int[] array) {
-        for(int i = 0; i < array.length; ++i) {
-            for(int j = i; j < array.length; ++j) {
-                for(int k = i; k <= j; ++k) {
+        for(int i = 0; i < array.length; i++) {
+            for(int j = i; j < array.length; j++) {
+                for(int k = i; k <= j; k++) {
                     System.out.print(array[k] + " ");
                 }
 
@@ -178,8 +219,8 @@ public class ArrayS {
     }
 
     public static void ch(String x) {
-        for(int i = 0; i < x.length(); ++i) {
-            for(int j = i + 1; j < x.length(); ++j) {
+        for(int i = 0; i < x.length(); i++) {
+            for(int j = i + 1; j < x.length(); j++) {
                 if (x.charAt(i) == x.charAt(j)) {
                     System.out.println("  " + j + "is  " + x.charAt(j));
                 }
@@ -192,8 +233,8 @@ public class ArrayS {
         int max_sum = Integer.MIN_VALUE;
         int current_value = 0;
 
-        for(int i = 0; i < array.length; ++i) {
-            for(int j = i; j < array.length; ++j) {
+        for(int i = 0; i < array.length; i++) {
+            for(int j = i; j < array.length; j++) {
                 for(int k = i; k <= j; ++k) {
                     current_value += array[k];
                 }
@@ -213,7 +254,7 @@ public class ArrayS {
         int max_sum = Integer.MIN_VALUE;
         int current_sum = 0;
 
-        for(int i = 0; i < array.length; ++i) {
+        for(int i = 0; i < array.length; i++) {
             current_sum += array[i];
             if (current_sum < 0) {
                 current_sum = 0;
@@ -232,17 +273,17 @@ public class ArrayS {
         leftMax_boundary[0] = array[0];
 
         int i;
-        for(i = 1; i < array.length; ++i) {
+        for(i = 1; i < array.length; i++) {
             leftMax_boundary[i] = Math.max(array[i], leftMax_boundary[i - 1]);
         }
 
         rightMax_boundary[array.length - 1] = array[array.length - 1];
 
-        for(i = array.length - 2; i >= 0; --i) {
+        for(i = array.length - 2; i >= 0; i--) {
             rightMax_boundary[i] = Math.max(array[i], rightMax_boundary[i + 1]);
         }
 
-        for(i = 0; i < array.length; ++i) {
+        for(i = 0; i < array.length; i++) {
             int waterLevel = Math.min(rightMax_boundary[i], leftMax_boundary[i]);
             total_rainWater += waterLevel - array[i];
         }
@@ -254,7 +295,7 @@ public class ArrayS {
         int buy_price = Integer.MAX_VALUE;
         int max_profit = 0;
 
-        for(int i = 0; i < array.length; ++i) {
+        for(int i = 0; i < array.length; i++) {
             System.out.println(buy_price);
             if (buy_price < array[i]) {
                 int profit = array[i] - buy_price;
@@ -271,9 +312,9 @@ public class ArrayS {
         String x = y.toLowerCase();
         int count = 0;
 
-        for(int i = 0; i < x.length(); ++i) {
+        for(int i = 0; i < x.length(); i++) {
             if (x.charAt(i) == 'a' || x.charAt(i) == 'e' || x.charAt(i) == 'i' || x.charAt(i) == 'o' || x.charAt(i) == 'u') {
-                ++count;
+                count++;
             }
         }
 
@@ -286,14 +327,14 @@ public class ArrayS {
         int platform_no = 1;
         int j = 0;
 
-        for(int i = 1; i < arrival.length; ++i) {
+        for(int i = 1; i < arrival.length; i++) {
             if (arrival[i] < departure[j]) {
-                ++platform_no;
+                platform_no++;
             } else {
-                --platform_no;
+                platform_no++;
             }
 
-            ++j;
+            j++;
         }
 
         return platform_no;
@@ -309,11 +350,11 @@ public class ArrayS {
     }
 
     public static int[] arr(int[] arr) {
-        for(int i = 0; i < arr.length - 1; ++i) {
+        for(int i = 0; i < arr.length - 1; i++) {
             int minNum = i;
 
             int j;
-            for(j = i + 1; j < arr.length; ++j) {
+            for(j = i + 1; j < arr.length; j++) {
                 if (arr[minNum] > arr[j]) {
                     minNum = j;
                 }
@@ -330,7 +371,7 @@ public class ArrayS {
     public static void hashmap(char[] arr) {
         HashMap<Character, Integer> hash = new HashMap();
 
-        for(int i = 0; i < arr.length; ++i) {
+        for(int i = 0; i < arr.length; i++) {
             if (!hash.containsKey(arr[i])) {
                 hash.put(arr[i], 1);
             } else {
@@ -345,7 +386,7 @@ public class ArrayS {
         String str = "hello world";
         HashMap<Character, Integer> charCount = new HashMap();
 
-        for(int i = 0; i < str.length(); ++i) {
+        for(int i = 0; i < str.length(); i++){
             char c = str.charAt(i);
             if (charCount.containsKey(c)) {
                 charCount.put(c, (Integer)charCount.get(c) + 1);
@@ -353,7 +394,6 @@ public class ArrayS {
                 charCount.put(c, 1);
             }
         }
-
         System.out.println(charCount);
     }
 }

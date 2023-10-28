@@ -21,7 +21,9 @@ public class Main {
             }
 
 
+
         }
+
     };
     Runnable r = () -> {
         System.out.println("munim");
@@ -37,17 +39,9 @@ public class Main {
 //        t1.start();
 //        List<String> list1 = u();
 //        System.out.println(list1);
+        new Thread(()-> System.out.println("hi")).start();
         demo();
-        Car n=new Car(){
-            @Override
-            public int multiply(int i, int j){
-                System.out.println(super.multiply(i,j));
-                System.out.println("do in inner");
-                return i*j;
-            }
-        };
-       // System.out.println(n.multiply(4,6));
-        System.out.println(n.multiply(7,8));
+
 
 
     }

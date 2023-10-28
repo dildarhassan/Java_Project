@@ -17,8 +17,8 @@ public class Assessment_Questions {
 //        for (int f:a){
 //            System.out.println(f);
 //        }
-        int[] arr1={1,2,6,6,5};
-        System.out.println(sumOfpairs(arr1));
+//        int[] arr1={1,2,6,6,5};
+//        System.out.println(sumOfpairs(arr1));
 //        list.add(1);
 //        list.add(2);
 //        list.add(3);
@@ -28,6 +28,8 @@ public class Assessment_Questions {
 //        list.add(3, 5);
 //        System.out.println(list);
 //        new StrngFunction();
+       // System.out.println(fact(4+1));
+        loopConcept(5);
     }
 
     public static String compress_string(String str) {
@@ -207,6 +209,38 @@ public class Assessment_Questions {
             }
         }
         return maxpairs;
+    }
+    public static int fact(int n){
+
+        if (n==1){
+            return 1;
+        }
+        //int x= n*(n-1);
+        return n*fact(n-1);
+
+        
+    }
+    public static void loopConcept(int n) {
+        for (int i=1;i<=4;i++){
+            for (int j = 1; j <= (4 - i); j++) {
+                System.out.print(" ");
+            }
+            for (int k=1;k<=(2*i)-1;k++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+
+    //Finding The Month Of The Year
+    public static String findMonth(int month){
+        if (month!=0){
+            String[] arr={"January","February","March","April","May","June","July","August","September","October","November","December"};
+            return (arr[month-1]);
+        }else {
+            return "0 is Invalid";
+        }
     }
 }
 

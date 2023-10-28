@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public  class StrngFunction extends Recursion {
@@ -29,9 +26,75 @@ public  class StrngFunction extends Recursion {
 //        StringBuilder stringBuilder=new StringBuilder(" ");
 //        stringBuilder.toString();
 //        x.charAt(0);
-        int arr[]={1,2,3,4,5};
-        int arr1[]={6,7,8,9,10};
-        addArray(arr,arr1);
+//        int arr[] = {1, 2, 3, 4, 5};
+//        int arr1[] = {6, 7, 8, 9, 10};
+//        addArray(arr, arr1);
+       //phno("hello how are you here ");
+       // System.out.println(WordtoDigit("one four two six double four triple six nine"));
+
+
+//        String[] stringsArr=new String[10];
+//
+//        Scanner sc=new Scanner(System.in);
+//        for (int i=0;i<stringsArr.length;i++){
+//            stringsArr[i]=sc.next();
+//        }
+//        int i=0;
+//        while (i<stringsArr.length){
+//
+//            i++;
+//        }
+
+//        String word=new Scanner(System.in).next();
+//        int noOfWord=1;
+//        int noOfSpace=0;
+//        int noOfUpper=0;
+//        int noOfLower=0;
+//        int niOfChar=0;
+//        for (int i=0;i<word.length();i++){
+//            if (word.charAt(i)!=' '){
+//                niOfChar+=1;
+//            }
+//            if (word.charAt(i)==' '){
+//                noOfSpace+=1;
+//                noOfWord+=1;
+//            }
+//            if (Character.isUpperCase(word.charAt(i))){
+//                noOfUpper+=1;
+//            }
+//            if (Character.isLowerCase(word.charAt(i))){
+//                noOfLower+=1;
+//            }
+//        }
+       // System.out.println(wordToDigit("nine six four double eight triple six nine"));
+//        System.out.println(isPrime(5));
+//        int start = 10;
+//        int end = 20;
+//        int[] result = fun(start, end);
+//
+//        for (int num : result) {
+//            System.out.print(num + " ");
+//        }
+      //  System.out.println(BigNo(55,36,32));
+
+        TreeSet<String> lexicographicSet = new TreeSet<>();
+
+        // Adding strings to the TreeSet
+        lexicographicSet.add("apple");
+        lexicographicSet.add("cherry");
+        lexicographicSet.add("banana");
+
+        lexicographicSet.add("date");
+
+        // Elements will be stored lexicographically
+        for (String s : lexicographicSet) {
+            System.out.println(s);
+        }
+        System.out.println(lexicographicSet);
+
+
+
+}
 
 
 
@@ -40,9 +103,6 @@ public  class StrngFunction extends Recursion {
 
 
 
-
-
-    }
 
 
     public static boolean palindrome(String word) {
@@ -138,7 +198,74 @@ public  class StrngFunction extends Recursion {
         return sb.toString();
     }
 
+    public static String wordToDigit(String no) {
+        HashMap<String, String> phNo = new HashMap<>();
+        phNo.put("zero", "0");
+        phNo.put("one", "1");
+        phNo.put("two", "2");
+        phNo.put("three", "3");
+        phNo.put("four", "4");
+        phNo.put("five", "5");
+        phNo.put("six", "6");
+        phNo.put("seven", "7");
+        phNo.put("eight", "8");
+        phNo.put("nine", "9");
 
+        String[] str=no.split(" ");
+        StringBuilder sb=new StringBuilder();
+        for (int i=0;i<str.length;i++){
+            if (!str[i].equals("double") && !str[i].equals("triple")){
+                sb.append(phNo.get(str[i]));
+            }else if (str[i].equals("double")){
+                i++;
+                sb.append(phNo.get(str[i])).append(phNo.get(str[i]));
+            }else{
+                i++;
+                sb.append(phNo.get(str[i])).append(phNo.get(str[i])).append(phNo.get(str[i]));
+            }
+        }
+        return sb.toString();
+    }
 
+    public static boolean isPrime(int num){
 
+        if (num==2){
+            return true;
+        }
+        for (int i=2;i<num;i++){
+
+            if (num%i== 0) {
+                System.out.println("not prime");
+                return false;
+
+            }
+        }
+        return true;
+
+//        boolean prime=true;
+//        for (int i=2;i<100;i++){
+//            for (int j=2;j<i;j++){
+//                if (i%j==0){
+//                    prime=false;
+//                    break;
+//                }
+//            }
+//        }
+//        return prime;
+    }
+    static int[] fun(int start,int end){
+        int[] arr=new int[(end-start)/2];
+        int j=0;
+        for (int i=start;i<end;i++){
+            if (i%2==0){
+                arr[j]=i;
+                j++;
+            }
+        }
+        return arr;
+    }
+    public static int biggerOfThreeNo(int a,int b,int c){
+        int max=a>b?a:b;
+        return max>c?max:c;
+    }
 }
